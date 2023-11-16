@@ -37,5 +37,5 @@ stringP str = undefined
 
 main :: IO ()
 main = do
-  let f = runParser $ sequence $ charP <$> "hel"
-  print $ f "hello"
+  let f = runParser $ sequence $ charP <$> "hello"
+  print $ f "hello world"
