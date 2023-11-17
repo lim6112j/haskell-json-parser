@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Main (main) where
 
 import Lib
@@ -33,9 +35,11 @@ charP x = Parser f
     f [] = Nothing
 
 stringP :: String -> Parser String
-stringP str = undefined
+stringP = mapM charP
 
 main :: IO ()
 main = do
-  let f = runParser $ sequence $ charP <$> "hello"
+  let f = runParser $ sequence $ map charP "hello"
   print $ f "hello world"
+  let g = runParser $ stringP "hel"
+  print $ g "hello world"
